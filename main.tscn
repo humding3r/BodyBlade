@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://5fibum6a66r8"]
+
+[ext_resource type="PackedScene" uid="uid://dqemfay0pwivo" path="res://Player/player.tscn" id="1_etfiw"]
+[ext_resource type="PackedScene" uid="uid://b62i6pv4ac4hv" path="res://world.tscn" id="2_n4qlt"]
+[ext_resource type="PackedScene" uid="uid://b80mbuloakyqf" path="res://Mob/mob.tscn" id="2_vgj7w"]
+[ext_resource type="Script" path="res://camera.gd" id="3_s8lv7"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Mob" parent="." instance=ExtResource("2_vgj7w")]
+position = Vector2(319, -37)
+scale = Vector2(0.309386, 0.309386)
+
+[node name="Player" parent="." instance=ExtResource("1_etfiw")]
+position = Vector2(50, -35)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("3_s8lv7")
+
+[node name="TileMap" parent="." instance=ExtResource("2_n4qlt")]
