@@ -16,7 +16,7 @@ func physics_process(delta):
 		change_state("fall")
 	elif Input.is_action_just_pressed("jump"):
 		change_state("jump")
-	elif object.velocity.x == 0 or not Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
+	elif object.velocity.x == 0 or direction == 0:
 		change_state("idle")
 
 func _on_double_tap(action : String):

@@ -11,9 +11,8 @@ extends CharacterBody2D
 @onready var debug_label : Label = $DebugLabel
 @onready var state_machine : Node = $StateMachine
 
-
-var direction : Vector2 = Vector2.ZERO
-var has_double_jumped : bool = false;
+var current_dash_speed : float = 0.0
+var has_double_jumped : bool = false
 
 func _physics_process(delta):
 	state_machine.physics_process(delta)

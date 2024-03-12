@@ -50,7 +50,7 @@ func physics_process(delta):
 			jump_buffered = true
 	
 	else:
-		if Input.get_axis("move_left", "move_right") == 0:
-			object.animated_sprite.play("idle")
-		else:
+		if direction:
 			object.animated_sprite.play("run")
+		else:
+			object.animated_sprite.play("idle")
