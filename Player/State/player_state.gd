@@ -22,7 +22,7 @@ func move(delta):
 
 	object.current_dash_speed = object.current_dash_speed - delta * 1500 if object.current_dash_speed > 0.0 else 0.0
 
-	if object.current_dash_speed - delta * 1500 <= 0.0:
+	if object.current_dash_speed > 0.0 and object.current_dash_speed - delta * 1500 <= 0.0:
 		exit_dash.emit()
 
 func apply_gravity(delta):
