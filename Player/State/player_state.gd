@@ -1,6 +1,7 @@
 extends State
 class_name PlayerState
 
+signal exit_dash
 
 const SPEED : float = 300.0
 const DOUBLETAP_DELAY = 0.20
@@ -20,6 +21,9 @@ func move(delta):
 		object.velocity.x = int(lerp(object.velocity.x, 0.0, 10 * delta))
 
 	object.current_dash_speed = object.current_dash_speed - delta * 1500 if object.current_dash_speed > 0.0 else 0.0
+
+	if object.current_dash_speed - delta * 1500 <= 0.0:
+		exit_dash.emit()
 
 func apply_gravity(delta):
 	object.velocity.y += gravity * delta

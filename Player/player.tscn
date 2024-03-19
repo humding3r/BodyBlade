@@ -234,5 +234,11 @@ script = ExtResource("13_ulqbc")
 script = ExtResource("14_a77pi")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="exit_dash" from="StateMachine/Idle" to="Trail" method="_on_exit_dash"]
+[connection signal="exit_dash" from="StateMachine/Run" to="Trail" method="_on_exit_dash"]
+[connection signal="exit_dash" from="StateMachine/Jump" to="Trail" method="_on_exit_dash"]
+[connection signal="exit_dash" from="StateMachine/DoubleJump" to="Trail" method="_on_exit_dash"]
+[connection signal="exit_dash" from="StateMachine/Fall" to="Trail" method="_on_exit_dash"]
 [connection signal="enter_dash" from="StateMachine/Dash" to="Trail" method="_on_enter_dash"]
 [connection signal="exit_dash" from="StateMachine/Dash" to="Trail" method="_on_exit_dash"]
+[connection signal="exit_dash" from="StateMachine/Base" to="Trail" method="_on_exit_dash"]

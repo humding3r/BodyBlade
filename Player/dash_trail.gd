@@ -1,8 +1,13 @@
 extends Line2D
 
+@onready var base_state : Node = self.owner.get_node("StateMachine/Base")
+@export var max_length : int = 250
+
 var queue : Array
 var is_dashing : bool = false
-@export var max_length : int = 250
+
+func _ready():
+	base_state.connect("exit_dash", _on_exit_dash)
 
 func _process(_delta):
 	if is_dashing:
