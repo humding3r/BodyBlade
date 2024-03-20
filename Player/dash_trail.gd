@@ -1,7 +1,7 @@
 extends Line2D
 
 @onready var base_state : Node = self.owner.get_node("StateMachine/Base")
-@export var max_length : int = 10
+@export var max_length : int = 250
 
 var queue : Array
 
