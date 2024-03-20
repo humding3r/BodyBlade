@@ -1,16 +1,12 @@
 extends Line2D
 
 @onready var base_state : Node = self.owner.get_node("StateMachine/Base")
-@export var max_length : int = 250
+@export var max_length : int = 10
 
 var queue : Array
-var is_dashing : bool = false
-
-func _ready():
-	base_state.connect("exit_dash", _on_exit_dash)
 
 func _process(_delta):
-	if is_dashing:
+	if owner.current_dash_speed != 0:
 		queue.push_front(get_parent().position)
 		
 		if queue.size() > max_length:
@@ -28,11 +24,3 @@ func _process(_delta):
 		queue.pop_back()
 		for point in queue:
 			add_point(point)
-
-func _on_enter_dash():
-	print("Player is dashing!")
-	is_dashing = true
-
-func _on_exit_dash():
-	print("Player is no longer dashing!")
-	is_dashing = false
