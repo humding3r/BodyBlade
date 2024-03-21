@@ -19,6 +19,7 @@ func _ready():
 
 func change_state(target_state_name):
 	if target_state_name == current_state_name: return
+	if not states[target_state_name].is_accessible: return
 
 	if current_state:
 		current_state.exit()

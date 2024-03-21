@@ -2,9 +2,6 @@ extends PlayerState
 
 const DEBUG_LABEL = "RUNNING"
 
-func _ready():
-	Global.double_tap.connect(_on_double_tap)
-
 func enter():
 	object.animated_sprite.play("run")
 
@@ -18,8 +15,3 @@ func physics_process(delta):
 		change_state("jump")
 	elif object.velocity.x == 0 or direction == 0:
 		change_state("idle")
-
-func _on_double_tap(action : String):
-	# print("Received double tap of ", action)
-	if action == "move_right" or action == "move_left":
-		change_state("dash")

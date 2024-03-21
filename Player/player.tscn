@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dqemfay0pwivo"]
+[gd_scene load_steps=37 format=3 uid="uid://dqemfay0pwivo"]
 
 [ext_resource type="Texture2D" uid="uid://c0mpria4kg1gx" path="res://sprites/Rogue/Death/Death-Sheet.png" id="1_caaru"]
 [ext_resource type="Texture2D" uid="uid://begg6pd0oxmqm" path="res://sprites/Rogue/Idle/Idle-Sheet.png" id="1_onqx6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Player/State/player_state_doublejump.gd" id="12_desju"]
 [ext_resource type="Script" path="res://Player/State/player_state_dash.gd" id="13_ulqbc"]
 [ext_resource type="Script" path="res://Player/State/player_state.gd" id="14_a77pi"]
+[ext_resource type="Script" path="res://Player/dash_cooldown.gd" id="15_dnoa2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f70wj"]
 atlas = ExtResource("1_caaru")
@@ -214,9 +215,6 @@ script = ExtResource("12_4b0lp")
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("13_ulqbc")
 
-[node name="DashCooldown" type="Timer" parent="StateMachine/Dash"]
-one_shot = true
-
 [node name="Trail" type="Line2D" parent="StateMachine/Dash"]
 show_behind_parent = true
 top_level = true
@@ -230,7 +228,13 @@ end_cap_mode = 2
 antialiased = true
 script = ExtResource("2_hj0hx")
 
+[node name="DashCooldown" type="Timer" parent="StateMachine/Dash"]
+wait_time = 0.8
+one_shot = true
+script = ExtResource("15_dnoa2")
+
 [node name="Base" type="Node" parent="StateMachine"]
 script = ExtResource("14_a77pi")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="timeout" from="StateMachine/Dash/DashCooldown" to="StateMachine/Dash" method="_on_dash_cooldown_timeout"]
