@@ -94,7 +94,7 @@ func check_bounce():
 			times_bounced += 1
 
 func throw(speed : Vector2):
-	print(speed)
+	# print(speed)
 
 	times_bounced = 0
 	sword_body.freeze = true

@@ -16,10 +16,6 @@
 [ext_resource type="Script" path="res://Player/State/player_state_dash.gd" id="13_ulqbc"]
 [ext_resource type="Script" path="res://Player/State/player_state.gd" id="14_a77pi"]
 
-[sub_resource type="Curve" id="Curve_7on6r"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.747253), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_f70wj"]
 atlas = ExtResource("1_caaru")
 region = Rect2(0, 0, 64, 32)
@@ -156,22 +152,13 @@ size = Vector2(20, 18.75)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecqqk"]
 radius = 24.0
 
+[sub_resource type="Curve" id="Curve_7on6r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.747253), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_tb87e")
-
-[node name="Trail" type="Line2D" parent="."]
-show_behind_parent = true
-top_level = true
-z_index = -1
-position = Vector2(0, 5)
-points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_7on6r")
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-antialiased = true
-script = ExtResource("2_hj0hx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fa2tf")
@@ -201,9 +188,6 @@ text = "ELLIOT THE YUNG BEAST OF WOODFIELD"
 show_behind_parent = true
 top_level = true
 
-[node name="DashCooldown" type="Timer" parent="."]
-one_shot = true
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -229,6 +213,22 @@ script = ExtResource("12_4b0lp")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("13_ulqbc")
+
+[node name="DashCooldown" type="Timer" parent="StateMachine/Dash"]
+one_shot = true
+
+[node name="Trail" type="Line2D" parent="StateMachine/Dash"]
+show_behind_parent = true
+top_level = true
+z_index = -1
+position = Vector2(0, 5)
+points = PackedVector2Array(0, 0)
+width_curve = SubResource("Curve_7on6r")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("2_hj0hx")
 
 [node name="Base" type="Node" parent="StateMachine"]
 script = ExtResource("14_a77pi")

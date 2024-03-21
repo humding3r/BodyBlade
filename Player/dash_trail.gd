@@ -7,7 +7,7 @@ var queue : Array
 
 func _process(_delta):
 	if owner.current_dash_speed != 0:
-		queue.push_front(get_parent().position)
+		queue.push_front(owner.position)
 		
 		if queue.size() > max_length:
 			queue.pop_back()
@@ -18,7 +18,7 @@ func _process(_delta):
 			add_point(point)
 	else:
 		if !queue.is_empty():
-			queue.push_front(get_parent().position)
+			queue.push_front(owner.position)
 		clear_points()
 		queue.pop_back()
 		queue.pop_back()

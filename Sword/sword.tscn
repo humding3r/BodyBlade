@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ko1h0oc85th"]
+[gd_scene load_steps=8 format=3 uid="uid://ko1h0oc85th"]
 
 [ext_resource type="Script" path="res://Sword/sword.gd" id="1_5ctjl"]
 [ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://sprites/slash1-Sheet.png" id="2_5y3ic"]
@@ -6,10 +6,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d733t"]
 radius = 23.9997
 height = 68.2667
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5fu3o"]
-atlas = ExtResource("2_5y3ic")
-region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38vhh"]
 atlas = ExtResource("2_5y3ic")
@@ -27,9 +23,6 @@ region = Rect2(192, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5fu3o")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_38vhh")
 }, {
 "duration": 1.0,
@@ -40,10 +33,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [node name="Sword" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_5ctjl")
 
 [node name="DamageZone" type="Area2D" parent="." groups=["Sword"]]
@@ -57,7 +51,7 @@ disabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_unqp6")
-frame = 3
+frame = 2
 frame_progress = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
