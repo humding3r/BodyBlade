@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://5fibum6a66r8"]
+[gd_scene load_steps=6 format=3 uid="uid://5fibum6a66r8"]
 
 [ext_resource type="PackedScene" uid="uid://dqemfay0pwivo" path="res://Player/player.tscn" id="1_etfiw"]
 [ext_resource type="PackedScene" uid="uid://b62i6pv4ac4hv" path="res://world.tscn" id="2_n4qlt"]
 [ext_resource type="Script" path="res://camera.gd" id="3_s8lv7"]
 [ext_resource type="PackedScene" uid="uid://tbvf53vhtiya" path="res://gui.tscn" id="5_aoywv"]
+[ext_resource type="PackedScene" uid="uid://b80mbuloakyqf" path="res://Mob/mob.tscn" id="5_bcfe7"]
 
 [node name="Main" type="Node2D"]
 
@@ -20,3 +21,6 @@ script = ExtResource("3_s8lv7")
 [node name="TileMap" parent="." instance=ExtResource("2_n4qlt")]
 
 [node name="GUI" parent="." instance=ExtResource("5_aoywv")]
+
+[node name="Mob" parent="." instance=ExtResource("5_bcfe7")]
+position = Vector2(-464, -56)

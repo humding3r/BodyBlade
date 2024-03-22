@@ -7,7 +7,6 @@ extends CharacterBody2D
 
 func _on_ready():
 	display_text.hide()
-	pass # Replace with function body.
 
 func _physics_process(delta):
 	# Add the gravity.
