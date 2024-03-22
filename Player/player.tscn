@@ -195,6 +195,10 @@ shape = SubResource("CircleShape2D_ecqqk")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_x0pge")
+debug = false
+
+[node name="Base" type="Node" parent="StateMachine"]
+script = ExtResource("14_a77pi")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("9_wkb8b")
@@ -230,9 +234,6 @@ script = ExtResource("2_hj0hx")
 [node name="DashCooldown" type="Timer" parent="StateMachine/Dash"]
 wait_time = 0.8
 one_shot = true
-
-[node name="Base" type="Node" parent="StateMachine"]
-script = ExtResource("14_a77pi")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="StateMachine/Dash/DashCooldown" to="StateMachine/Dash" method="_on_dash_cooldown_timeout"]

@@ -5,16 +5,16 @@ var state_machine
 var object
 
 func enter():
-    pass
+	pass
 
 func exit():
-    pass
+	pass
 
 func physics_process(_delta):
-    pass
+	pass
 
 func process(_delta):
-    pass
+	pass
 
 func change_state(next_state_name):
-    state_machine.change_state(next_state_name)
+	state_machine.change_state(next_state_name)

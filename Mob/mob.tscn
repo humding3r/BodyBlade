@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b80mbuloakyqf"]
+[gd_scene load_steps=8 format=3 uid="uid://b80mbuloakyqf"]
 
 [ext_resource type="Script" path="res://Mob/mob.gd" id="1_8yyhb"]
 [ext_resource type="Texture2D" uid="uid://xckpk7dfpyie" path="res://icon.svg" id="1_oljex"]
+[ext_resource type="Script" path="res://Mob/State/mob_state_fall.gd" id="3_b3mdq"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="3_lftdd"]
+[ext_resource type="Script" path="res://Mob/State/mob_state_idle.gd" id="4_wlxba"]
+[ext_resource type="Script" path="res://Mob/State/mob_state.gd" id="5_xoibe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rr06r"]
 size = Vector2(128, 128)
@@ -16,6 +19,7 @@ script = ExtResource("1_8yyhb")
 texture = ExtResource("1_oljex")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -64.0
 offset_top = -138.0
 offset_right = 64.0
@@ -36,6 +40,15 @@ shape = SubResource("RectangleShape2D_rr06r")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_lftdd")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_wlxba")
+
+[node name="Base" type="Node" parent="StateMachine"]
+script = ExtResource("5_xoibe")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("3_b3mdq")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

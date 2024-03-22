@@ -7,10 +7,11 @@ var doubletap_time = DOUBLETAP_DELAY
 var last_keycode = 0
 
 func _ready():
-	for actionName in InputMap.get_actions():
-		print("%s:" % actionName)
-		for inputEvent in InputMap.action_get_events(actionName):
-			print("	%s" % inputEvent.as_text())
+	#for actionName in InputMap.get_actions():
+		#print("%s:" % actionName)
+		#for inputEvent in InputMap.action_get_events(actionName):
+			#print("	%s" % inputEvent.as_text())
+	pass
 
 func _process(delta):
 	if doubletap_time > 0.0:
