@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ko1h0oc85th"]
 
 [ext_resource type="Script" path="res://Sword/sword.gd" id="1_5ctjl"]
-[ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://sprites/slash1-Sheet.png" id="2_5y3ic"]
+[ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://Sprites/slash1-Sheet.png" id="2_5y3ic"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d733t"]
 radius = 23.9997

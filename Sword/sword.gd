@@ -6,11 +6,11 @@ extends Node2D
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var Player : CharacterBody2D = $".."
 
-func _process(delta):
+func _input(_event):
 	# print(Input.is_action_just_pressed("attack"))
 	if Input.is_action_just_released("attack") and Player.sword_held and not Player.just_picked_up and Player.charge_time < Player.charge_threshold:
 		look_at(get_global_mouse_position())
 		animation_player.play("slash")
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	sprite.flip_v = not sprite.flip_v

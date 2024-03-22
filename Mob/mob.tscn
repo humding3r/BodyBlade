@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Mob/mob.gd" id="1_8yyhb"]
 [ext_resource type="Texture2D" uid="uid://xckpk7dfpyie" path="res://icon.svg" id="1_oljex"]
-[ext_resource type="Script" path="res://state_machine.gd" id="3_lftdd"]
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="3_lftdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rr06r"]
 size = Vector2(128, 128)

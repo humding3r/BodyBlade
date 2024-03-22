@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dqemfay0pwivo" path="res://Player/player.tscn" id="1_etfiw"]
 [ext_resource type="PackedScene" uid="uid://b62i6pv4ac4hv" path="res://world.tscn" id="2_n4qlt"]
-[ext_resource type="Script" path="res://camera.gd" id="3_s8lv7"]
-[ext_resource type="PackedScene" uid="uid://tbvf53vhtiya" path="res://gui.tscn" id="5_aoywv"]
+[ext_resource type="Script" path="res://Utility/camera.gd" id="3_s8lv7"]
+[ext_resource type="PackedScene" uid="uid://tbvf53vhtiya" path="res://Utility/gui.tscn" id="5_aoywv"]
 [ext_resource type="PackedScene" uid="uid://b80mbuloakyqf" path="res://Mob/mob.tscn" id="5_bcfe7"]
 
 [node name="Main" type="Node2D"]

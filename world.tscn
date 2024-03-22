@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b62i6pv4ac4hv"]
 
-[ext_resource type="Texture2D" uid="uid://dqwoka1y7b4w3" path="res://sprites/tilemap.png" id="1_7c4dc"]
+[ext_resource type="Texture2D" uid="uid://dqwoka1y7b4w3" path="res://Sprites/tilemap.png" id="1_7c4dc"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_jaoje"]
 tile_data = PackedInt32Array(65536, 65536, 1, 131072, 65536, 2, 196608, 65536, 3, 1, 131072, 0, 65537, 131072, 1, 131073, 131072, 2, 196609, 131072, 3, 262145, 131072, 4, 2, 196608, 0, 65538, 196608, 1, 131074, 196608, 2, 196610, 196608, 3, 262146, 196608, 4, 3, 262144, 0, 65539, 262144, 1, 131075, 262144, 2, 196611, 262144, 3, 262147, 262144, 4, 65540, 327680, 1, 131076, 327680, 2, 196612, 327680, 3)
