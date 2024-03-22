@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var debug : bool = true
+
 @onready var charge_time = 0.0
 @onready var charge_threshold = 0.5
 
@@ -19,7 +21,7 @@ func _physics_process(delta):
 	move_and_slide()
 	Camera.update_camera()
 	update_facing_direction()
-	update_debug_label()
+	if debug: update_debug_label()
 
 func _ready():
 	state_machine.change_state("fall")

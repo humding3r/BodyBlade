@@ -9,7 +9,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_etfiw")]
-position = Vector2(50, -35)
+position = Vector2(-1296, -16)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
@@ -22,5 +22,10 @@ script = ExtResource("3_s8lv7")
 
 [node name="GUI" parent="." instance=ExtResource("5_aoywv")]
 
-[node name="Mob" parent="." instance=ExtResource("5_bcfe7")]
-position = Vector2(-464, -56)
+[node name="EnemyContainer" type="Node" parent="."]
+
+[node name="Mob" parent="EnemyContainer" instance=ExtResource("5_bcfe7")]
+position = Vector2(-1160, 0)
+
+[node name="Mob2" parent="EnemyContainer" instance=ExtResource("5_bcfe7")]
+position = Vector2(-1024, -24)
