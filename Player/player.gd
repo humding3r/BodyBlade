@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var debug : bool = true
+@export var debug : bool = false
 
 @onready var charge_time = 0.0
 @onready var charge_threshold = 0.5

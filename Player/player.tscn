@@ -195,7 +195,6 @@ shape = SubResource("CircleShape2D_ecqqk")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_x0pge")
-debug = false
 
 [node name="Base" type="Node" parent="StateMachine"]
 script = ExtResource("14_a77pi")

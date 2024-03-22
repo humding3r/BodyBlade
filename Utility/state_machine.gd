@@ -8,7 +8,7 @@ var current_state
 var current_state_name
 var previous_state_name
 
-@export var debug := true
+@export var debug := false
 
 func _ready():
 	for child in get_children():
