@@ -14,7 +14,6 @@ func _on_base_hit_taken(area):
 	attacker = area.owner
 	attacker_damage = attacker.damage_value
 
-# FIXME: All mobs flash when one mob is hit
 func enter():
 	object.velocity += calculate_knockback()
 	object.animation_player.play("hurt")
