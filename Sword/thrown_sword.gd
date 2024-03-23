@@ -66,6 +66,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("swap") and not player.sword_held:
 		swap()
 
+func _process(delta):
+	rotation = sword_body.linear_velocity.angle()
+
 func _ready():
 	sword_body.hide()
 	stuck_sprite.hide()
@@ -106,7 +109,7 @@ func throw(speed : Vector2):
 	elif get_global_mouse_position().x > player.global_position.x:
 		sword_animation.play("spin_cw")
 	collision_body.set_deferred("disabled", false)
-	sword_body.apply_central_impulse(speed)
+	sword_body.apply_central_impulse(speed + player.velocity.normalized())
 	sword_body.show()
 	thrown_sprite.show()
 	hitbox.set_deferred("disabled", false)
@@ -131,9 +134,9 @@ func check_stick(impact_angle : int, count : int):
 	return false
 
 func stick(surface : KinematicCollision2D, impact_direction : int):
-	print("stuck!")
-	print(surface.get_angle())
-	print(impact_direction)
+	#print("stuck!")
+	#print(surface.get_angle())
+	#print(impact_direction)
 	match impact_direction:
 		0:
 			stuck_sprite.rotation_degrees = 0

@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b80mbuloakyqf"]
+[gd_scene load_steps=14 format=3 uid="uid://b80mbuloakyqf"]
 
 [ext_resource type="Script" path="res://Mob/mob.gd" id="1_8yyhb"]
 [ext_resource type="Texture2D" uid="uid://xckpk7dfpyie" path="res://icon.svg" id="1_oljex"]
 [ext_resource type="Shader" path="res://Mob/hurt_flash.gdshader" id="2_4cuen"]
 [ext_resource type="Script" path="res://Mob/State/mob_state_fall.gd" id="3_b3mdq"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="3_lftdd"]
-[ext_resource type="Script" path="res://Mob/debug_label.gd" id="3_ohtf5"]
 [ext_resource type="Script" path="res://Mob/State/mob_state_idle.gd" id="4_wlxba"]
 [ext_resource type="Script" path="res://Mob/State/mob_state.gd" id="5_xoibe"]
 [ext_resource type="Script" path="res://Mob/State/mob_state_hurt.gd" id="7_ryaia"]
@@ -91,7 +90,6 @@ material = SubResource("ShaderMaterial_10ngf")
 texture = ExtResource("1_oljex")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -64.0
 offset_top = -138.0
 offset_right = 64.0
@@ -99,7 +97,6 @@ offset_bottom = -73.0
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-script = ExtResource("3_ohtf5")
 
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
@@ -135,5 +132,5 @@ libraries = {
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="area_entered" from="Area2D" to="StateMachine/Base" method="_on_area_2d_area_entered"]
-[connection signal="hit_taken" from="StateMachine/Base" to="Label" method="_on_base_hit_taken"]
+[connection signal="hit_taken" from="StateMachine/Base" to="." method="_on_base_hit_taken"]
 [connection signal="hit_taken" from="StateMachine/Base" to="StateMachine/Hurt" method="_on_base_hit_taken"]

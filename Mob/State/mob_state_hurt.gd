@@ -24,9 +24,10 @@ func physics_process(delta):
 		change_state("fall")
 
 func calculate_knockback() -> Vector2:
-	if attacker.global_position.x > object.global_position.x:
-		return Vector2(-250, -base_up_knockback)
-	if attacker.global_position.x < object.global_position.x:
-		return Vector2(250, -base_up_knockback)
-	return Vector2(0.0, base_up_knockback)
+	#if attacker_area.global_position.x > object.global_position.x:
+		#return Vector2(-250, -base_up_knockback)
+	#if attacker_area.global_position.x < object.global_position.x:
+		#return Vector2(250, -base_up_knockback)
+	print(Vector2.RIGHT.rotated(attacker.global_rotation))
+	return Vector2(0.0, -base_up_knockback) + Vector2.RIGHT.rotated(attacker.global_rotation) * 100
 
