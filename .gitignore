@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # IDE ignores
 .vscode/
+
+# .tmp ignores
+*.tmp
