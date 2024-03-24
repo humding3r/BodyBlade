@@ -3,7 +3,7 @@ extends Node2D
 @export var throw_speed = 750
 @export var return_speed = 100
 @export var damage_value = 2
-
+@export var knockback_factor : int = 2
 
 @onready var player : CharacterBody2D = $".."
 @onready var sword_body : RigidBody2D = $"SwordBody"
@@ -47,7 +47,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("attack") and player.sword_held:
 		if player.charge_time > player.charge_threshold and not player.just_picked_up:
-			print("Throw executed!")
+			#print("Throw executed!")
 			throw(final_throw_velocity)
 			player.charge_time = 0.0
 		else:
@@ -61,7 +61,12 @@ func _physics_process(delta):
 		else:
 			thrown_sprite.show()
 			sword_body.freeze = false
+			damage_value = 3
+			knockback_factor = 3
 			sword_body.apply_central_impulse((player.global_position - sword_body.global_position).normalized() * return_speed)
+	elif not Input.is_action_pressed("attack") and not player.sword_held:
+		damage_value = 2
+		knockback_factor = 2
 	
 	if Input.is_action_just_pressed("swap") and not player.sword_held:
 		swap()

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var damage_value = 1
+@export var knockback_factor : int = 1
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D

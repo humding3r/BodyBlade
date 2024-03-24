@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dqemfay0pwivo"]
+[gd_scene load_steps=37 format=3 uid="uid://dqemfay0pwivo"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_tb87e"]
 [ext_resource type="Script" path="res://Player/dash_trail.gd" id="2_hj0hx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Player/State/player_state_doublejump.gd" id="12_desju"]
 [ext_resource type="Script" path="res://Player/State/player_state_dash.gd" id="13_ulqbc"]
 [ext_resource type="Script" path="res://Player/State/player_state.gd" id="14_a77pi"]
+[ext_resource type="Script" path="res://Utility/camera.gd" id="16_ph6er"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f70wj"]
 atlas = ExtResource("2_wek5o")
@@ -163,8 +164,7 @@ script = ExtResource("1_tb87e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fa2tf")
-animation = &"run"
-frame_progress = 0.0921761
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -234,6 +234,13 @@ script = ExtResource("2_hj0hx")
 [node name="DashCooldown" type="Timer" parent="StateMachine/Dash"]
 wait_time = 0.8
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("16_ph6er")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="StateMachine/Dash/DashCooldown" to="StateMachine/Dash" method="_on_dash_cooldown_timeout"]
