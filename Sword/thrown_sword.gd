@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var throw_speed = 750
+@export var throw_speed = 500
 @export var return_speed = 100
 @export var damage_value = 2
 @export var knockback_factor : int = 2
@@ -62,7 +62,7 @@ func _physics_process(delta):
 			thrown_sprite.show()
 			sword_body.freeze = false
 			damage_value = 3
-			knockback_factor = 3
+			knockback_factor = 4
 			sword_body.apply_central_impulse((player.global_position - sword_body.global_position).normalized() * return_speed)
 	elif not Input.is_action_pressed("attack") and not player.sword_held:
 		damage_value = 2
@@ -70,9 +70,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("swap") and not player.sword_held:
 		swap()
-
-func _process(delta):
-	rotation = sword_body.linear_velocity.angle()
 
 func _ready():
 	sword_body.hide()
@@ -108,13 +105,13 @@ func throw(speed : Vector2):
 	sword_body.freeze = true
 	player.sword_held = false
 	sword_body.freeze = false
-
+	
 	if get_global_mouse_position().x < player.global_position.x:
 		sword_animation.play("spin_cc")
 	elif get_global_mouse_position().x > player.global_position.x:
 		sword_animation.play("spin_cw")
 	collision_body.set_deferred("disabled", false)
-	sword_body.apply_central_impulse(speed + player.velocity.normalized())
+	sword_body.apply_central_impulse(speed + player.velocity)
 	sword_body.show()
 	thrown_sprite.show()
 	hitbox.set_deferred("disabled", false)

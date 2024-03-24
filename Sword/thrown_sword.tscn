@@ -100,6 +100,7 @@ script = ExtResource("1_cdyba")
 show_behind_parent = true
 top_level = true
 collision_layer = 4
+lock_rotation = true
 
 [node name="ThrownSprite" type="Sprite2D" parent="SwordBody"]
 texture = ExtResource("1_r3wdh")
@@ -114,7 +115,7 @@ shape = SubResource("CircleShape2D_bsufb")
 [node name="PickupHitbox" type="CollisionShape2D" parent="SwordBody/PickupZone"]
 shape = SubResource("CircleShape2D_oigd0")
 
-[node name="DamageZone" type="Area2D" parent="SwordBody" groups=["Sword"]]
+[node name="DamageZone" type="Area2D" parent="SwordBody" groups=["Projectile", "Sword"]]
 
 [node name="DamageHitbox" type="CollisionShape2D" parent="SwordBody/DamageZone"]
 shape = SubResource("CircleShape2D_oigd0")
