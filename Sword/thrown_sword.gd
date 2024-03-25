@@ -178,17 +178,3 @@ func swap():
 	sword_body.global_position = temp
 	sword_body.linear_velocity = temp_velocity
 	pickup_zone.set_deferred("disabled", false)
-
-#func update_trajectory(vel : Vector2, delta):
-	#var max_points = 300
-	#trajectory_line.clear_points()
-	#var pos : Vector2 = sword_body.position
-	#for i in max_points:
-		#trajectory_line.add_point(pos)
-		#vel.y += PhysicsServer2D.AREA_PARAM_GRAVITY * delta
-
-		#var collision = trajectory_body.move_and_collide(vel * delta, false, true, true)
-		#if collision:
-			#vel = vel.bounce(collision.get_normal)
-
-		#pos += vel * delta
