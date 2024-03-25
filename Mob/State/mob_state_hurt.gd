@@ -30,7 +30,7 @@ func calculate_knockback() -> Vector2:
 		#return Vector2(250, -base_up_knockback)
 	print(Vector2.RIGHT.rotated(attacker.global_rotation))
 	if attacker_area.is_in_group("Projectile"):
-		return Vector2(0.0, -base_up_knockback) + (attacker.sword_body.linear_velocity / 10) \
+		return Vector2(0.0, -base_up_knockback) + (attacker.linear_velocity / 10) \
 			* attacker_knockback + Vector2(RandomNumberGenerator.new().randf_range(-10.0, 10.0), RandomNumberGenerator.new().randf_range(-10.0, 10.0))
 	return Vector2(0.0, -base_up_knockback) + Vector2.RIGHT.rotated(attacker.global_rotation) \
 			* 100 * attacker_knockback + Vector2(RandomNumberGenerator.new().randf_range(-10.0, 10.0), RandomNumberGenerator.new().randf_range(-10.0, 10.0))

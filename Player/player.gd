@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var charge_time = 0.0
 @onready var charge_threshold = 0.5
 
-@onready var sword_held : bool = true
 @onready var just_picked_up : bool = false
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D

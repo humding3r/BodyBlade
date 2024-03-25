@@ -162,6 +162,18 @@ z_index = 1
 collision_layer = 0
 script = ExtResource("1_tb87e")
 
+[node name="DebugLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = -48.0
+offset_right = 157.0
+offset_bottom = -25.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "ELLIOT THE YUNG BEAST OF WOODFIELD"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fa2tf")
 animation = &"idle"
@@ -171,23 +183,9 @@ position = Vector2(0, 1)
 scale = Vector2(1, 1.6)
 shape = SubResource("RectangleShape2D_03lg4")
 
-[node name="DebugLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -48.0
-offset_right = 20.0
-offset_bottom = -25.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-text = "ELLIOT THE YUNG BEAST OF WOODFIELD"
-
 [node name="Sword" parent="." instance=ExtResource("5_me5dy")]
 
-[node name="ThrownSword" parent="." instance=ExtResource("7_qtx2r")]
-show_behind_parent = true
-top_level = true
+[node name="SwordBody" parent="." instance=ExtResource("7_qtx2r")]
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -9,7 +9,6 @@ const MAX_DASH_SPEED : float = 750.0
 
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction : float = 0.0
-var is_accessible : bool = true
 
 func _ready():
 	Global.double_tap.connect(_on_double_tap)

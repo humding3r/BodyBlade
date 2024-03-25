@@ -3,6 +3,7 @@ extends PlayerState
 const DEBUG_LABEL = "DASHING"
 
 @onready var dash_cooldown = $DashCooldown
+var is_accessible : bool = true
 
 func enter():
 	object.animated_sprite.play("run")

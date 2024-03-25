@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Utility/global.gd"
 PlayerVariables="*res://Utility/player_variables.gd"
+EventBus="*res://Utility/eventbus.gd"
 
 [display]
 
