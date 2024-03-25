@@ -25,4 +25,7 @@ func enter():
 
 func physics_process(delta):
 	check_bounce()
+	
+	if Input.is_action_pressed("attack"):
+		change_state("return")
 
