@@ -6,7 +6,6 @@ var charge_time : float = 0.0
 func enter():
 	object.thrown_sprite.hide()
 	object.stuck_sprite.hide()
-	object.pickup_hitbox.set_deferred("disabled", true)
 	object.damage_hitbox.set_deferred("disabled", true)
 	object.freeze = true
 

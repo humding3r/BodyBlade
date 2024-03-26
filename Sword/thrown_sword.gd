@@ -6,7 +6,7 @@ extends Node2D
 @export var knockback_factor : int = 2
 
 @onready var collision_hitbox : CollisionShape2D = $CollisionHitbox
-@onready var pickup_hitbox : CollisionShape2D = $PickupArea/PickupHitbox
+@onready var pickup_area : Area2D = $PickupArea
 @onready var damage_hitbox : CollisionShape2D = $DamageArea/DamageHitbox
 @onready var sword_animation : AnimationPlayer = $Spin
 @onready var thrown_sprite : Sprite2D = $ThrownSprite
