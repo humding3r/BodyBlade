@@ -2,7 +2,7 @@ extends SwordState
 
 signal update_impact_direction(new_impact_direction)
 
-@export var speed = 500
+@export var speed : float = 500
 @export var damage_value : int = 2
 @export var knockback_factor : int = 2
 
