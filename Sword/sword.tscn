@@ -1,22 +1,22 @@
 [gd_scene load_steps=22 format=3 uid="uid://ndtf6b7f8tfk"]
 
-[ext_resource type="Script" path="res://Sword/thrown_sword.gd" id="1_cdyba"]
-[ext_resource type="Texture2D" uid="uid://ccpj7vsot1wdh" path="res://Sprites/Bone.png" id="1_r3wdh"]
-[ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://Sprites/slash1-Sheet.png" id="2_rv07y"]
-[ext_resource type="Texture2D" uid="uid://ihn7sytl5mbw" path="res://Sprites/swordstuck2.png" id="3_bgc2i"]
-[ext_resource type="Texture2D" uid="uid://dolttoktcfl7f" path="res://Sprites/swordstuck1.png" id="3_x58ld"]
-[ext_resource type="Script" path="res://Utility/state_machine.gd" id="5_4lx72"]
-[ext_resource type="Script" path="res://Sword/State/sword_state.gd" id="6_1ujwk"]
-[ext_resource type="Script" path="res://Sword/State/sword_state_hold.gd" id="7_a6i5y"]
-[ext_resource type="Script" path="res://Sword/State/sword_state_throw.gd" id="8_d3n1x"]
-[ext_resource type="Script" path="res://Sword/State/sword_state_return.gd" id="9_t26qt"]
-[ext_resource type="Script" path="res://Sword/State/sword_state_stuck.gd" id="11_y6hr7"]
+[ext_resource type="Script" path="res://Sword/sword.gd" id="1_ab04u"]
+[ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://Sprites/slash1-Sheet.png" id="2_722k2"]
+[ext_resource type="Texture2D" uid="uid://ccpj7vsot1wdh" path="res://Sprites/Bone.png" id="3_7cyc5"]
+[ext_resource type="Texture2D" uid="uid://ihn7sytl5mbw" path="res://Sprites/swordstuck2.png" id="4_nqexi"]
+[ext_resource type="Texture2D" uid="uid://dolttoktcfl7f" path="res://Sprites/swordstuck1.png" id="5_trv0r"]
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="6_i1exm"]
+[ext_resource type="Script" path="res://Sword/State/sword_state.gd" id="7_ti7pi"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_hold.gd" id="8_iklut"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_throw.gd" id="9_25ufy"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_return.gd" id="10_gj3by"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_stuck.gd" id="11_jmi55"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hcjj4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_bgc2i")
+"texture": ExtResource("4_nqexi")
 }],
 "loop": true,
 "name": &"thrown_left",
@@ -24,7 +24,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_x58ld")
+"texture": ExtResource("5_trv0r")
 }],
 "loop": true,
 "name": &"thrown_right",
@@ -186,17 +186,17 @@ show_behind_parent = true
 top_level = true
 collision_layer = 4
 lock_rotation = true
-script = ExtResource("1_cdyba")
+script = ExtResource("1_ab04u")
 
 [node name="HeldSprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(31.25, 0)
-texture = ExtResource("2_rv07y")
+texture = ExtResource("2_722k2")
 hframes = 4
 frame = 1
 
 [node name="ThrownSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_r3wdh")
+texture = ExtResource("3_7cyc5")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 48)
 
@@ -231,23 +231,23 @@ visible = false
 shape = SubResource("CircleShape2D_oigd0")
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("5_4lx72")
+script = ExtResource("6_i1exm")
 debug = true
 
 [node name="Base" type="Node" parent="StateMachine"]
-script = ExtResource("6_1ujwk")
+script = ExtResource("7_ti7pi")
 
 [node name="Hold" type="Node" parent="StateMachine"]
-script = ExtResource("7_a6i5y")
+script = ExtResource("8_iklut")
 
 [node name="Throw" type="Node" parent="StateMachine"]
-script = ExtResource("8_d3n1x")
+script = ExtResource("9_25ufy")
 
 [node name="Return" type="Node" parent="StateMachine"]
-script = ExtResource("9_t26qt")
+script = ExtResource("10_gj3by")
 
 [node name="Stuck" type="Node" parent="StateMachine"]
-script = ExtResource("11_y6hr7")
+script = ExtResource("11_jmi55")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
