@@ -18,4 +18,7 @@ mono_crash.*.json
 .vscode/
 
 # .tmp ignores
-*.tmp
+**.tmp
+
+# .import ignores
+**.import

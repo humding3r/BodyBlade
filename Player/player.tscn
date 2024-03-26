@@ -1,11 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://dqemfay0pwivo"]
+[gd_scene load_steps=36 format=3 uid="uid://dqemfay0pwivo"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_tb87e"]
 [ext_resource type="Script" path="res://Player/dash_trail.gd" id="2_hj0hx"]
-[ext_resource type="Texture2D" uid="uid://c0mpria4kg1gx" path="res://sprites/Rogue/Death/Death-Sheet.png" id="2_wek5o"]
-[ext_resource type="Texture2D" uid="uid://begg6pd0oxmqm" path="res://sprites/Rogue/Idle/Idle-Sheet.png" id="3_5i606"]
-[ext_resource type="Texture2D" uid="uid://cpfgpdd5ec4tg" path="res://sprites/Rogue/Run/Run-Sheet.png" id="4_2c134"]
-[ext_resource type="PackedScene" uid="uid://ko1h0oc85th" path="res://Sword/sword.tscn" id="5_me5dy"]
+[ext_resource type="Texture2D" uid="uid://c0mpria4kg1gx" path="res://Sprites/Rogue/Death/Death-Sheet.png" id="2_wek5o"]
+[ext_resource type="Texture2D" uid="uid://begg6pd0oxmqm" path="res://Sprites/Rogue/Idle/Idle-Sheet.png" id="3_5i606"]
+[ext_resource type="Texture2D" uid="uid://cpfgpdd5ec4tg" path="res://Sprites/Rogue/Run/Run-Sheet.png" id="4_2c134"]
 [ext_resource type="PackedScene" uid="uid://ndtf6b7f8tfk" path="res://Sword/thrown_sword.tscn" id="7_qtx2r"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="8_x0pge"]
 [ext_resource type="Script" path="res://Player/State/player_state_idle.gd" id="9_wkb8b"]
@@ -182,8 +181,6 @@ animation = &"idle"
 position = Vector2(0, 1)
 scale = Vector2(1, 1.6)
 shape = SubResource("RectangleShape2D_03lg4")
-
-[node name="Sword" parent="." instance=ExtResource("5_me5dy")]
 
 [node name="SwordBody" parent="." instance=ExtResource("7_qtx2r")]
 

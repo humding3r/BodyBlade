@@ -11,7 +11,8 @@ func enter() -> void:
 	object.freeze = false
 
 func physics_process(delta) -> void:
-	object.apply_central_impulse((object.get_parent().global_position - object.global_position).normalized() * return_speed)
-	
-	if object.pickup_area.overlaps_area(object.get_parent().get_node("Area2D")):
-		change_state("hold")
+	if Input.is_action_pressed("attack"):
+		object.apply_central_impulse((object.get_parent().global_position - object.global_position).normalized() * return_speed)
+		
+		if object.pickup_area.overlaps_area(object.get_parent().get_node("Area2D")):
+			change_state("hold")

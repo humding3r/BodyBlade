@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ndtf6b7f8tfk"]
+[gd_scene load_steps=22 format=3 uid="uid://ndtf6b7f8tfk"]
 
 [ext_resource type="Script" path="res://Sword/thrown_sword.gd" id="1_cdyba"]
-[ext_resource type="Texture2D" uid="uid://ccpj7vsot1wdh" path="res://sprites/Bone.png" id="1_r3wdh"]
-[ext_resource type="Texture2D" uid="uid://ihn7sytl5mbw" path="res://sprites/swordstuck2.png" id="3_bgc2i"]
-[ext_resource type="Texture2D" uid="uid://dolttoktcfl7f" path="res://sprites/swordstuck1.png" id="3_x58ld"]
+[ext_resource type="Texture2D" uid="uid://ccpj7vsot1wdh" path="res://Sprites/Bone.png" id="1_r3wdh"]
+[ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://Sprites/slash1-Sheet.png" id="2_rv07y"]
+[ext_resource type="Texture2D" uid="uid://ihn7sytl5mbw" path="res://Sprites/swordstuck2.png" id="3_bgc2i"]
+[ext_resource type="Texture2D" uid="uid://dolttoktcfl7f" path="res://Sprites/swordstuck1.png" id="3_x58ld"]
 [ext_resource type="Script" path="res://Utility/state_machine.gd" id="5_4lx72"]
 [ext_resource type="Script" path="res://Sword/State/sword_state.gd" id="6_1ujwk"]
 [ext_resource type="Script" path="res://Sword/State/sword_state_hold.gd" id="7_a6i5y"]
@@ -33,8 +34,86 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_bsufb"]
 radius = 16.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jk07w"]
+radius = 23.9997
+height = 68.2667
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_oigd0"]
 radius = 24.0
+
+[sub_resource type="Animation" id="Animation_063vk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeldDamageArea/DamageHitbox:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeldSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i7m0s"]
+resource_name = "slash"
+length = 0.166675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeldSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeldSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeldDamageArea/DamageHitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5wv8"]
+_data = {
+"RESET": SubResource("Animation_063vk"),
+"slash": SubResource("Animation_i7m0s")
+}
 
 [sub_resource type="Animation" id="Animation_yhq6o"]
 resource_name = "spin_cc"
@@ -109,23 +188,35 @@ collision_layer = 4
 lock_rotation = true
 script = ExtResource("1_cdyba")
 
+[node name="HeldSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(31.25, 0)
+texture = ExtResource("2_rv07y")
+hframes = 4
+frame = 1
+
 [node name="ThrownSprite" type="Sprite2D" parent="."]
-rotation = 3.69741
 texture = ExtResource("1_r3wdh")
-flip_h = true
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 48)
 
 [node name="StuckSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(1, 1.01937)
 sprite_frames = SubResource("SpriteFrames_hcjj4")
 animation = &"thrown_left"
-offset = Vector2(0, -16)
+offset = Vector2(0, -12)
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_bsufb")
+
+[node name="HeldDamageArea" type="Area2D" parent="." groups=["Sword"]]
+
+[node name="DamageHitbox" type="CollisionShape2D" parent="HeldDamageArea"]
+position = Vector2(28, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jk07w")
+disabled = true
 
 [node name="PickupArea" type="Area2D" parent="."]
 visible = false
@@ -158,7 +249,14 @@ script = ExtResource("9_t26qt")
 [node name="Stuck" type="Node" parent="StateMachine"]
 script = ExtResource("11_y6hr7")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u5wv8")
+}
+
 [node name="Spin" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5i0pb")
 }
+
+[connection signal="update_impact_direction" from="StateMachine/Throw" to="StateMachine/Stuck" method="_on_throw_update_impact_direction"]
