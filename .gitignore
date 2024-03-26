@@ -19,6 +19,3 @@ mono_crash.*.json
 
 # .tmp ignores
 **.tmp
-
-# .import ignores
-**.import
