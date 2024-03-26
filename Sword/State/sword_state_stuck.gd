@@ -22,6 +22,9 @@ func enter():
 	object.freeze = true
 
 func process(delta):
+	if Input.is_action_just_pressed("swap"):
+		swap()
+	
 	if Input.is_action_pressed("attack"):
 		change_state("return")
 

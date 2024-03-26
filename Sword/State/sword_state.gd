@@ -15,9 +15,9 @@ func swap():
 		object.stuck_sprite.hide()
 		object.thrown_sprite.show()
 
-	object.get_parent().pickup_zone.set_deferred("disabled", true)
+	object.pickup_area.set_deferred("disabled", true)
 	object.get_parent().global_position = object.global_position
 	object.get_parent().velocity = object.linear_velocity
 	object.global_position = temp
 	object.linear_velocity = temp_velocity
-	object.pickup_zone.set_deferred("disabled", false)
+	object.pickup_area.set_deferred("disabled", false)

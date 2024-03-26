@@ -25,6 +25,9 @@ func enter():
 	object.damage_hitbox.set_deferred("disabled", false)
 
 func physics_process(delta):
+	if Input.is_action_just_pressed("swap"):
+		swap()
+	
 	var collision_info = object.move_and_collide(Vector2.ZERO)
 	if collision_info:
 		times_bounced += 1
