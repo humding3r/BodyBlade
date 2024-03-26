@@ -258,3 +258,5 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_5i0pb")
 }
+
+[connection signal="update_impact_direction" from="StateMachine/Throw" to="StateMachine/Stuck" method="_on_throw_update_impact_direction"]

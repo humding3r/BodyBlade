@@ -1,7 +1,5 @@
 extends Node2D
 
-@export var throw_speed = 500
-@export var return_speed = 100
 @export var damage_value = 2
 @export var knockback_factor : int = 2
 
