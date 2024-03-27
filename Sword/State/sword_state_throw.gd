@@ -32,36 +32,35 @@ func physics_process(delta):
 	if collision_info:
 		times_bounced += 1
 		var impact_direction : int
+		
 		if (collision_info.get_angle() > 0) and (collision_info.get_angle() < PI / 4):
 			impact_direction = 0
 		if (collision_info.get_angle() >= PI / 4) and (collision_info.get_angle() < (3 * PI) / 4):
-			if object.linear_velocity.x >= 0:
-				impact_direction = 1
-			else:
-				impact_direction = 3
+			impact_direction = 1 if object.linear_velocity.x >= 0 else 3
 		if (collision_info.get_angle() >= (3 * PI) / 4):
 			impact_direction = 2
+			
 		if check_stick(impact_direction, times_bounced):
 			times_bounced = 0
 			update_impact_direction.emit(impact_direction)
 			change_state("stuck")
-			#stick(collision_info, impact_direction)
 		else:
 			object.linear_velocity = object.linear_velocity.bounce(collision_info.get_normal())
 			object.linear_velocity *= BOUNCE_SCALE
-
 	
 	if Input.is_action_pressed("attack"):
 		change_state("return")
 
 func check_stick(impact_direction : int, count : int):
+	
 	if Input.is_action_pressed("attack"): return false
-	if count == 3:
-		return true
+	if count == 3: return true
+	
 	if abs(object.linear_velocity.x) > 600:
 		if impact_direction == 1 or impact_direction == 3:
 			return true
 	if abs(object.linear_velocity.y) > 600:
 		if impact_direction == 0 or impact_direction == 2:
 			return true
+			
 	return false

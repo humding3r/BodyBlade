@@ -4,13 +4,13 @@ extends SwordState
 @export var damage_value : int = 3
 @export var knockback_factor : int = 2
 
-func enter() -> void:
+func enter():
 	object.thrown_sprite.show()
 	object.stuck_sprite.hide()
 	object.damage_hitbox.set_deferred("disabled", false)
 	object.freeze = false
 
-func physics_process(delta) -> void:
+func physics_process(delta):
 	if Input.is_action_pressed("attack"):
 		object.apply_central_impulse((object.get_parent().global_position - object.global_position).normalized() * return_speed)
 		
