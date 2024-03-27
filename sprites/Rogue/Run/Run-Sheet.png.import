@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpfgpdd5ec4tg"
-path="res://.godot/imported/Run-Sheet.png-f8684a0ae53444b7db464b4b4dd17f1d.ctex"
+path="res://.godot/imported/Run-Sheet.png-e61dda3943cc79ba3ae0f186206bc8ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rogue/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-f8684a0ae53444b7db464b4b4dd17f1d.ctex"]
+source_file="res://sprites/Rogue/Run/Run-Sheet.png"
+dest_files=["res://.godot/imported/Run-Sheet.png-e61dda3943cc79ba3ae0f186206bc8ee.ctex"]
 
 [params]
 
