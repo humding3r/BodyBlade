@@ -1,7 +1,5 @@
 extends SwordState
 
-var impact_direction : int
-
 func enter():
 	match impact_direction:
 		0:
@@ -28,5 +26,5 @@ func process(delta):
 	if Input.is_action_pressed("attack"):
 		change_state("return")
 
-func _on_throw_update_impact_direction(new_impact_direction):
+func _on_update_impact_direction(new_impact_direction):
 	impact_direction = new_impact_direction

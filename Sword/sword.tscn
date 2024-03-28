@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ndtf6b7f8tfk"]
+[gd_scene load_steps=23 format=3 uid="uid://ndtf6b7f8tfk"]
 
 [ext_resource type="Script" path="res://Sword/sword.gd" id="1_ab04u"]
 [ext_resource type="Texture2D" uid="uid://q05rcgoggceg" path="res://Sprites/slash1-Sheet.png" id="2_722k2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Sword/State/sword_state_throw.gd" id="9_25ufy"]
 [ext_resource type="Script" path="res://Sword/State/sword_state_return.gd" id="10_gj3by"]
 [ext_resource type="Script" path="res://Sword/State/sword_state_stuck.gd" id="11_jmi55"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_free.gd" id="12_myatf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hcjj4"]
 animations = [{
@@ -249,6 +250,9 @@ script = ExtResource("10_gj3by")
 [node name="Stuck" type="Node" parent="StateMachine"]
 script = ExtResource("11_jmi55")
 
+[node name="Free" type="Node" parent="StateMachine"]
+script = ExtResource("12_myatf")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u5wv8")
@@ -259,4 +263,5 @@ libraries = {
 "": SubResource("AnimationLibrary_5i0pb")
 }
 
-[connection signal="update_impact_direction" from="StateMachine/Throw" to="StateMachine/Stuck" method="_on_throw_update_impact_direction"]
+[connection signal="update_impact_direction" from="StateMachine/Throw" to="StateMachine/Stuck" method="_on_update_impact_direction"]
+[connection signal="update_impact_direction" from="StateMachine/Free" to="StateMachine/Stuck" method="_on_update_impact_direction"]
