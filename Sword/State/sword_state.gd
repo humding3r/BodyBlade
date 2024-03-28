@@ -12,7 +12,7 @@ func swap():
 	var temp_velocity = object.get_parent().velocity
 
 	if object.get_parent().is_on_floor():
-		object.stuck_sprite.rotation_degrees = 0
+		object.rotation_degrees = 0
 	else:
 		change_state("free")
 

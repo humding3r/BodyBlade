@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dolttoktcfl7f"
-path="res://.godot/imported/swordstuck1.png-32caabdde9e87c9723edc139762c467c.ctex"
+path="res://.godot/imported/swordstuck1.png-1fdf54d5a25cb0e881c6c101674066a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/swordstuck1.png"
-dest_files=["res://.godot/imported/swordstuck1.png-32caabdde9e87c9723edc139762c467c.ctex"]
+source_file="res://Sprites/swordstuck1.png"
+dest_files=["res://.godot/imported/swordstuck1.png-1fdf54d5a25cb0e881c6c101674066a7.ctex"]
 
 [params]
 
