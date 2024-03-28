@@ -1,0 +1,164 @@
+[gd_scene load_steps=17 format=3 uid="uid://brs8byu4xxsrw"]
+
+[ext_resource type="Script" path="res://Sword/sword.gd" id="1_cdyba"]
+[ext_resource type="Texture2D" uid="uid://ccpj7vsot1wdh" path="res://sprites/Bone.png" id="1_r3wdh"]
+[ext_resource type="Texture2D" uid="uid://ihn7sytl5mbw" path="res://sprites/swordstuck2.png" id="3_bgc2i"]
+[ext_resource type="Texture2D" uid="uid://dolttoktcfl7f" path="res://sprites/swordstuck1.png" id="3_x58ld"]
+[ext_resource type="Script" path="res://Utility/state_machine.gd" id="5_4lx72"]
+[ext_resource type="Script" path="res://Sword/State/sword_state.gd" id="6_1ujwk"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_hold.gd" id="7_a6i5y"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_throw.gd" id="8_d3n1x"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_return.gd" id="9_t26qt"]
+[ext_resource type="Script" path="res://Sword/State/sword_state_stuck.gd" id="11_y6hr7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hcjj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bgc2i")
+}],
+"loop": true,
+"name": &"thrown_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x58ld")
+}],
+"loop": true,
+"name": &"thrown_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsufb"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oigd0"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_yhq6o"]
+resource_name = "spin_cc"
+length = 0.333342
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrownSprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThrownSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_rtg04"]
+resource_name = "spin_cw"
+length = 0.333342
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ThrownSprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ThrownSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5i0pb"]
+_data = {
+"spin_cc": SubResource("Animation_yhq6o"),
+"spin_cw": SubResource("Animation_rtg04")
+}
+
+[node name="SwordBody" type="RigidBody2D"]
+show_behind_parent = true
+top_level = true
+collision_layer = 4
+lock_rotation = true
+script = ExtResource("1_cdyba")
+
+[node name="ThrownSprite" type="Sprite2D" parent="."]
+rotation = 3.69741
+texture = ExtResource("1_r3wdh")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 48)
+
+[node name="StuckSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(1, 1.01937)
+sprite_frames = SubResource("SpriteFrames_hcjj4")
+animation = &"thrown_left"
+offset = Vector2(0, -16)
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_bsufb")
+
+[node name="PickupArea" type="Area2D" parent="."]
+visible = false
+
+[node name="PickupHitbox" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_oigd0")
+
+[node name="DamageArea" type="Area2D" parent="." groups=["Projectile", "Sword"]]
+visible = false
+
+[node name="DamageHitbox" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_oigd0")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_4lx72")
+debug = true
+
+[node name="Base" type="Node" parent="StateMachine"]
+script = ExtResource("6_1ujwk")
+
+[node name="Hold" type="Node" parent="StateMachine"]
+script = ExtResource("7_a6i5y")
+
+[node name="Throw" type="Node" parent="StateMachine"]
+script = ExtResource("8_d3n1x")
+
+[node name="Return" type="Node" parent="StateMachine"]
+script = ExtResource("9_t26qt")
+
+[node name="Stuck" type="Node" parent="StateMachine"]
+script = ExtResource("11_y6hr7")
+
+[node name="Spin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5i0pb")
+}
