@@ -25,9 +25,6 @@ func _physics_process(delta):
 func _ready():
 	state_machine.change_state("fall")
 	
-# Return the mouse position bound to the borders of the viewport
-func get_clamped_mouse_position(mouse_pos:Vector2):
-	return Vector2(clamp(mouse_pos.x, 0.0, get_viewport_rect().size.x), clamp(mouse_pos.y, 0.0, get_viewport_rect().size.y))
 
 # Make player face cursor
 func update_facing_direction():
