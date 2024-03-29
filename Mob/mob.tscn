@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b80mbuloakyqf"]
+[gd_scene load_steps=15 format=3 uid="uid://b80mbuloakyqf"]
 
 [ext_resource type="Script" path="res://Mob/mob.gd" id="1_8yyhb"]
 [ext_resource type="Texture2D" uid="uid://xckpk7dfpyie" path="res://icon.svg" id="1_oljex"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Mob/State/mob_state_idle.gd" id="4_wlxba"]
 [ext_resource type="Script" path="res://Mob/State/mob_state.gd" id="5_xoibe"]
 [ext_resource type="Script" path="res://Mob/State/mob_state_hurt.gd" id="7_ryaia"]
+[ext_resource type="Script" path="res://Mob/State/mob_state_chase.gd" id="9_tva5d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_10ngf"]
 resource_local_to_scene = true
@@ -124,6 +125,9 @@ script = ExtResource("3_b3mdq")
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("7_ryaia")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("9_tva5d")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
