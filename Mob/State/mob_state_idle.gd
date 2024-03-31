@@ -1,6 +1,9 @@
 extends MobState
 
-
+func enter():
+	for area in object.detection_area.get_overlapping_areas():
+		if area.is_in_group("Player"):
+			change_state("chase")
 
 func physics_process(delta):
 	apply_gravity(delta)
@@ -9,5 +12,6 @@ func physics_process(delta):
 			change_state("fall")
 	object.velocity.x = int(lerp(object.velocity.x, 0.0, 10 * delta))
 
-func process(delta):
-	pass
+func _on_detection_area_area_entered(area):
+	if area.is_in_group("Player"):
+		change_state("chase")

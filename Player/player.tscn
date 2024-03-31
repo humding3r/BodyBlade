@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dqemfay0pwivo"]
+[gd_scene load_steps=35 format=3 uid="uid://dqemfay0pwivo"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_tb87e"]
 [ext_resource type="Script" path="res://Player/dash_trail.gd" id="2_hj0hx"]
@@ -149,14 +149,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03lg4"]
 size = Vector2(20, 18.75)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ecqqk"]
-radius = 24.0
-
 [sub_resource type="Curve" id="Curve_7on6r"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.747253), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_layer = 0
 script = ExtResource("1_tb87e")
@@ -177,17 +174,19 @@ text = "ELLIOT THE YUNG BEAST OF WOODFIELD"
 sprite_frames = SubResource("SpriteFrames_fa2tf")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(1, 1.6)
 shape = SubResource("RectangleShape2D_03lg4")
 
 [node name="SwordBody" parent="." instance=ExtResource("7_qtx2r")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="RevealArea" type="Area2D" parent="." groups=["Player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ecqqk")
+[node name="RevealHitbox" type="CollisionShape2D" parent="RevealArea"]
+position = Vector2(0, 1)
+scale = Vector2(1, 1.6)
+shape = SubResource("RectangleShape2D_03lg4")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_x0pge")

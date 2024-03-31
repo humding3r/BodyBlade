@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-@onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var state_machine : Node = $StateMachine
-@onready var collision_body : CollisionShape2D = $CollisionBody
+@onready var detection_area : Area2D = $DetectionArea
 @onready var debug_label : Label = $Label
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 

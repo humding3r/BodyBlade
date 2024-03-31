@@ -3,6 +3,7 @@ class_name MobState
 
 signal hit_taken(area)
 
+@onready var player = get_tree().get_first_node_in_group("Player")
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func apply_gravity(delta):
