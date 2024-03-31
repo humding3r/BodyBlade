@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b80mbuloakyqf"]
+[gd_scene load_steps=16 format=3 uid="uid://b80mbuloakyqf"]
 
 [ext_resource type="Script" path="res://Mob/mob.gd" id="1_8yyhb"]
 [ext_resource type="Texture2D" uid="uid://xckpk7dfpyie" path="res://icon.svg" id="1_oljex"]
@@ -14,6 +14,8 @@
 resource_local_to_scene = true
 shader = ExtResource("2_4cuen")
 shader_parameter/visible = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1tm0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rr06r"]
 size = Vector2(128, 128)
@@ -100,11 +102,18 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Area2D" type="Area2D" parent="."]
+
+[node name="DetectionHitbox" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.57079
+scale = Vector2(50, 50)
+shape = SubResource("CapsuleShape2D_1tm0l")
+
+[node name="HitboxArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 collision_mask = 3
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("RectangleShape2D_rr06r")
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
@@ -135,6 +144,6 @@ libraries = {
 }
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="area_entered" from="Area2D" to="StateMachine/Base" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="HitboxArea" to="StateMachine/Base" method="_on_area_2d_area_entered"]
 [connection signal="hit_taken" from="StateMachine/Base" to="." method="_on_base_hit_taken"]
 [connection signal="hit_taken" from="StateMachine/Base" to="StateMachine/Hurt" method="_on_base_hit_taken"]
