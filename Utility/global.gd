@@ -25,3 +25,6 @@ func _input(event : InputEvent) -> void:
 		else:
 			last_keycode = event.keycode
 		doubletap_time = DOUBLETAP_DELAY
+	
+	if event.is_action_pressed("quit"):
+		get_tree().quit()
