@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0mpria4kg1gx"
-path="res://.godot/imported/Death-Sheet.png-6d57eb42c7636986aa4dfd9c8460cb5a.ctex"
+path="res://.godot/imported/Death-Sheet.png-d81bdd24bc98cb24deb4977506a2f1f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Rogue/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-6d57eb42c7636986aa4dfd9c8460cb5a.ctex"]
+source_file="res://sprites/Rogue/Death/Death-Sheet.png"
+dest_files=["res://.godot/imported/Death-Sheet.png-d81bdd24bc98cb24deb4977506a2f1f8.ctex"]
 
 [params]
 
